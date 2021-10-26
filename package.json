@@ -1,27 +1,65 @@
 {
-  "name": "reactnativecomponenttemplatestorybook",
+  "name": "@reusejs/react-native-component-template",
   "version": "0.0.1",
-  "private": true,
+  "description": "A library which works as a base to build react components and push to npm",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reusejs/react-native-component-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reusejs/react-native-component-template/issues"
+  },
+  "homepage": "https://github.com/reusejs/react-native-component-template",
+  "author": "Rajiv Seelam",
+  "license": "MIT",
   "scripts": {
+    "prepublishOnly": "npm run build",
+    "release": "gh release create",
+    "bump": "npm version patch",
+    "build": "NODE_ENV=production rollup -c",
+    "serve": "NODE_ENV=production rollup -c -w",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "storybook": "start-storybook -p 7007",
+    "build-storybook": "build-storybook"
   },
-  "dependencies": {
-    "react": "17.0.2",
-    "react-native": "0.66.1"
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": "^0.66.1",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
     "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.3",
     "eslint": "7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
-    "react-test-renderer": "17.0.2"
+    "react-dom": ">=16.8.0",
+    "react-test-renderer": "17.0.2",
+    "rollup": "^2.58.3",
+    "react": ">=16.8.0",
+    "react-native": "^0.66.1"
   },
   "jest": {
     "preset": "react-native"
